@@ -1,0 +1,29 @@
+server:
+  port: 8182
+
+###################################
+# SPARK配置
+###################################
+spark:
+  master:
+    uri: spark://192.168.1.120:7077 #Standalone模式  设置为 local 则为本地开发模式
+  executor:
+    memory: 512m #程序执行申请使用内存大小
+  cores:
+    max: 10 #程序执行申请使用最大内核数量
+  ui:
+    enabled: true #是否开启sparkUi监控
+  sql:
+    warehouse:
+      dir: spark-warehouse #用户存放hive table的目录
+
+###################################
+# logback配置
+###################################
+logging:
+  config:
+    classpath:logback-spring.xml #日志扩展配置文件地址
+  level:
+    root: info
+    org.wfeng.spark: debug
+  path: logs #日志文件路径
